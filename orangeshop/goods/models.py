@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=50, verbose_namee='Название')
+    title = models.CharField(max_length=50, verbose_name='Название')
     image = models.ImageField(upload_to='goods/', blank=True)
     slug = models.SlugField(unique=True)
 
