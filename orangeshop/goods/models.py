@@ -45,3 +45,8 @@ class ParameterInGood(models.Model):
 
     def __str__(self):
         return f'{self.good}  {self.parameter}'
+
+
+class HeaderImage(models.Model):
+    image = models.ImageField()
+    font = models.TextField()
