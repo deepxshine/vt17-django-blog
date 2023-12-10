@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}{{ good.title }}{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    <div class="col">
+      {% thumbnail good.image "1000x1000" upscale=True as img %}
+      <img src="{{img.url}}">
+      {% endthumbnail %}
+    </div>
+    <div class="col">
+      <h1>{{ good.title }}</h1>
+      <div style="border: 1px solid black; border-radius: 9px; margin-top:5px">
+
+      <ul>
+        <li>
+          В категории <a href="#" style="color: black">{{ good.category }}</a>
+        </li>
+        <li>
+          От продавца <a href="#" style="color: black">
+          {% if good.seller.get_full_name %} {{ good.seller.get_full_name }}
+          {% else %} {{good.seller}} {% endif %}
+        </a>
+        </li>
+      </ul>
+        </div>
+      <div style="border: 1px solid black; border-radius: 9px; margin-top:5px" class="py-2">
+        <h5 style="margin:10px; font-size: 24px"> {{ good.price }} ₽ </h5>
+        <button type="button" class="btn btn-light" style="margin-left:10px; margin-bottom: 5px">Добавить в корзину</button>
+        <button type="button" class="btn btn-light" style="margin-left:10px; margin-bottom: 5px">Добавить в избранное</button>
+      </div>
+      <div class="container py-3" style="border: 1px solid black; border-radius: 9px; margin-top:5px">
+        <p>{{good.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

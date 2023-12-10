@@ -34,6 +34,9 @@ class Good(models.Model):
     seller = models.ForeignKey(User, on_delete=models.CASCADE)
     parameters = models.ManyToManyField(Parameter, through="ParameterInGood")
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.title
 

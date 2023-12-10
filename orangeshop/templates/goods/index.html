@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block tilte %} Главная страница {% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row">
+    {% for good in goods %}
+    <div class="col">
+      <div class="card">
+        {% thumbnail good.image "1000" padding=True as img %}
+
+        <img src="{{img.url}}" class="card-img-top">
+        {% endthumbnail %}
+
+        <div class="card-body">
+         <a href="{% url 'goods:good_info' good.id %}" style="color:black"> <h5 class="card-title" style="text-align:center">{{ good.title }}</h5></a>
+          <h5 class="card-title" style="text-align:center">{{ good.price }} р</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
